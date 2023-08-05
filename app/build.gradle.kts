@@ -1,11 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.banit.chewchase"
     compileSdk = 33
+
 
     defaultConfig {
         applicationId = "com.banit.chewchase"
@@ -33,15 +37,56 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //Bar Code Scanner Library
+    implementation("me.dm7.barcodescanner:zbar:1.9.13")
+
+    //ROOM DATABASE Library
+    val roomVersion = "2.5.2"
+    implementation ("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    //Lifecycle
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.6.1")
+
+    implementation("com.google.dagger:hilt-android:2.45")
+    kapt("com.google.dagger:hilt-compiler:2.45")
+
+    //shared preference
+    implementation("androidx.preference:preference-ktx:1.2.0")
+
+    //Recyclerview
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+
+    //Dialog Libraries
+    implementation("com.github.f0ris.sweetalert:library:1.6.2")
+
+    //Logging
+    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation("com.jakewharton:process-phoenix:2.1.2")
+
+
+
+
+
+
 }
