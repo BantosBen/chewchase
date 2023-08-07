@@ -2,8 +2,10 @@ package com.banit.chewchase.views.order
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import androidx.appcompat.app.AppCompatActivity
 import com.banit.chewchase.databinding.ActivityPaymentBinding
 import com.banit.chewchase.utils.DialogUtils
 import com.banit.chewchase.utils.formatCurrency
@@ -24,6 +26,64 @@ class PaymentActivity : AppCompatActivity() {
         binding.btnPay.setOnClickListener {
             pay()
         }
+
+        binding.edCardNumber.addTextChangedListener(object : TextWatcher {
+            private var isFormatting = false
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // Avoid re-triggering afterTextChanged method
+                if (isFormatting) return
+                isFormatting = true
+
+                val cleaned = StringBuilder(s.toString().replace(" ", ""))
+                val formatted = StringBuilder()
+
+                for (i in cleaned.indices) {
+                    if (i != 0 && i % 4 == 0) {
+                        formatted.append(" ")
+                    }
+                    formatted.append(cleaned[i])
+                }
+
+                s?.replace(0, s.length, formatted)
+                isFormatting = false
+            }
+        })
+
+        binding.edExpiryDate.addTextChangedListener(object : TextWatcher {
+            private var isFormatting = false
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // Avoid re-triggering afterTextChanged method
+                if (isFormatting) return
+                isFormatting = true
+
+                val cleaned = StringBuilder(s.toString().replace("/", ""))
+                val formatted = StringBuilder()
+
+                for (i in cleaned.indices) {
+                    if (i != 0 && i % 2 == 0) {
+                        formatted.append("/")
+                    }
+                    formatted.append(cleaned[i])
+                }
+
+                s?.replace(0, s.length, formatted)
+                isFormatting = false
+            }
+
+        })
     }
 
     private fun pay() {

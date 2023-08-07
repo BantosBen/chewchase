@@ -45,7 +45,6 @@ class NewOrderActivity : AppCompatActivity() {
         if (result.contents == null) {
             val originalIntent = result.originalIntent
             if (originalIntent == null) {
-                Timber.tag("MainActivity").d("Cancelled scan")
                 Toast.makeText(mContext, "Cancelled", Toast.LENGTH_LONG).show()
             } else if (originalIntent.hasExtra(Intents.Scan.MISSING_CAMERA_PERMISSION)) {
                 Timber.tag("MainActivity").d("Cancelled scan due to missing camera permission")
@@ -56,7 +55,6 @@ class NewOrderActivity : AppCompatActivity() {
                 ).show()
             }
         } else {
-            Timber.tag("MainActivity").d("Scanned")
             fetchMenuItems(result.contents)
         }
     }
