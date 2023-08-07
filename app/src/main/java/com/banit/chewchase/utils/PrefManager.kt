@@ -46,14 +46,14 @@ class PrefManager {
         editor!!.commit()
     }
 
-    fun getSessionToken(): String {
-        return pref!!.getString(sessionToken, "no-token")!!
+    fun getUserID(): String {
+        return pref!!.getString("user_id", "0")!!
     }
     fun getReferralCode(): String {
         return pref!!.getString("ref_code", "XXXXX")!!
     }
-    fun setLoggedIn(_sessionToken: String) {
-        editor!!.putString(sessionToken, _sessionToken)
+    fun setLoggedIn(userID: String) {
+        editor!!.putString("user_id", userID)
         editor!!.putBoolean(isLoggedIn, true)
         editor!!.commit()
     }
@@ -61,7 +61,6 @@ class PrefManager {
     fun logout() {
         editor!!.clear()
         editor!!.apply()
-        setIsFirstTime()
     }
 
     fun updateBalance(balance: String) {
