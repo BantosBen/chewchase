@@ -68,6 +68,8 @@ dependencies {
 
     //Bar Code Scanner Library
     implementation("me.dm7.barcodescanner:zbar:1.9.13")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
 
     //ROOM DATABASE Library
     val roomVersion = "2.5.2"

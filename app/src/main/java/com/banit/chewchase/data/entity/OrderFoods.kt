@@ -3,6 +3,7 @@ package com.banit.chewchase.data.entity
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(
     tableName = "order_foods_table",
@@ -24,7 +25,7 @@ import androidx.room.PrimaryKey
 data class OrderFoods(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val orderFoodsOrderId: Int,
+    var orderFoodsOrderId: Int = 0,
     val menuItem: String,
     val quantity: Int
-)
+): Serializable

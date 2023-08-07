@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.ViewOrderActivity">
+    tools:context=".views.order.ViewOrderActivity">
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         android:textAppearance="?textAppearanceBody1"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:id="@+id/txt.order.number"/>
+        android:id="@+id/txt.order.name"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$50.00"
+                android:id="@+id/txt.sub.total"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textAppearance="?textAppearanceBody2"/>
@@ -69,6 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$50.00"
+                android:id="@+id/txt.tip"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textAppearance="?textAppearanceBody2"/>
@@ -87,19 +89,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$50.00"
+                android:id="@+id/txt.total"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textAppearance="?textAppearanceBody1"
                 android:textStyle="bold"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/food_item"
-        app:layout_constraintTop_toBottomOf="@id/txt.order.number"
+        app:layout_constraintTop_toBottomOf="@id/txt.order.name"
         app:layout_constraintBottom_toTopOf="@id/layout.payment"
         android:layout_marginHorizontal="12dp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:id="@+id/recycler_view"
+            tools:listitem="@layout/food_item" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

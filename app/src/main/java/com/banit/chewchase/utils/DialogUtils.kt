@@ -9,12 +9,10 @@ import com.banit.chewchase.App
 import com.banit.chewchase.R
 
 
-/**
- * @Author: Angatia Benson
- * @Date: 26/08/2022
- * Copyright (c) 2022 Bantechnis
- */
+
 object DialogUtils {
+
+    var isPayed:Boolean = false
 
     fun toast(message: String) =
         Toast.makeText(App.application.applicationContext, message, Toast.LENGTH_LONG).show()

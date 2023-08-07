@@ -11,9 +11,10 @@ import com.banit.chewchase.data.models.UserOrdersWithFoods
 import com.banit.chewchase.databinding.ActivityMainBinding
 import com.banit.chewchase.utils.PrefManager
 import com.banit.chewchase.utils.loadActivity
-import com.banit.chewchase.views.NewOrderActivity
-import com.banit.chewchase.views.ViewOrderActivity
+import com.banit.chewchase.views.order.NewOrderActivity
+import com.banit.chewchase.views.order.ViewOrderActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.Serializable
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -31,9 +32,9 @@ class MainActivity : AppCompatActivity() {
         orderAdapter = OrderAdapter(arrayListOf())
         orderAdapter.onOrderClickListener = object : OrderAdapter.OnOrderClickListener {
             override fun onOrderClick(userOrdersWithFoods: UserOrdersWithFoods) {
-                val data = HashMap<String, String>()
-                data["id"] = userOrdersWithFoods.order.orderId.toString()
-                loadActivity(mContext, ViewOrderActivity::class.java, dataString = data)
+                val data = HashMap<String, Serializable>()
+                data["data"] = userOrdersWithFoods
+                loadActivity(mContext, ViewOrderActivity::class.java, dataObject = data)
             }
         }
         binding.recyclerView.adapter = orderAdapter
@@ -41,6 +42,10 @@ class MainActivity : AppCompatActivity() {
         binding.fabNewOrder.setOnClickListener {
             loadActivity(mContext, NewOrderActivity::class.java)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         viewModel.fetchOrdersForUser(PrefManager().getUserID()).observe(this, Observer { orders ->
             if (orders.isNotEmpty()) {

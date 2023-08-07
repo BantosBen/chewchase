@@ -1,5 +1,6 @@
 package com.banit.chewchase.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,4 +14,8 @@ interface MenuDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(items: List<Menu>)
+
+    @Query("SELECT * FROM menu_table WHERE id = :menuId")
+    suspend fun getMenuItemById(menuId: String): Menu
+
 }

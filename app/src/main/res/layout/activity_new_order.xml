@@ -4,14 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.NewOrderActivity">
+    tools:context=".views.order.NewOrderActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:navigationIcon="@drawable/baseline_chevron_left"
         app:title="Create New Order"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/toolbar"/>
+        android:id="@+id/toolbar" />
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Order Name"
+        android:id="@+id/ed.name"
+        app:layout_constraintBottom_toBottomOf="@id/btn.add.food"
+        app:layout_constraintEnd_toStartOf="@id/btn.add.food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +66,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$50.00"
+                android:text="$0.00"
+                android:id="@+id/txt.sub.total"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:textAppearance="?textAppearanceBody2"/>
@@ -71,9 +86,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$50.00"
+                android:text="$0.00"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/txt.tip"
                 android:textAppearance="?textAppearanceBody2"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -89,29 +105,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$50.00"
+                android:text="$0.00"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/txt.total"
                 android:textAppearance="?textAppearanceBody1"
                 android:textStyle="bold"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/btn.continue"
             android:text="Continue"/>
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/food_item"
         app:layout_constraintTop_toBottomOf="@id/btn.add.food"
         app:layout_constraintBottom_toTopOf="@id/layout.payment"
         android:layout_marginHorizontal="12dp"
-        android:visibility="gone"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_view"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/food_item" />
+    </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/empty.layout"
         app:layout_constraintTop_toBottomOf="@id/btn.add.food"
         app:layout_constraintBottom_toTopOf="@id/layout.payment">
         <ImageView

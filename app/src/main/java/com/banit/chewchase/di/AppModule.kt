@@ -6,6 +6,7 @@ import com.banit.chewchase.data.AppDatabase
 import com.banit.chewchase.data.AppInitializer
 import com.banit.chewchase.data.dao.MenuDAO
 import com.banit.chewchase.data.dao.OrderDAO
+import com.banit.chewchase.data.dao.OrderFoodsDAO
 import com.banit.chewchase.data.dao.UserDAO
 import com.banit.chewchase.data.repository.OrderRepository
 import com.banit.chewchase.data.repository.UserRepository
@@ -64,6 +65,12 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideOrderRepository(orderDAO: OrderDAO): OrderRepository = OrderRepository(orderDAO)
+    fun provideOrderFoodsDAO(database: AppDatabase): OrderFoodsDAO = database.orderFoodsDAO()
+
+    @Provides
+    @Singleton
+    fun provideOrderRepository(
+        orderDAO: OrderDAO, menuDAO: MenuDAO, orderFoodsDAO: OrderFoodsDAO
+    ): OrderRepository = OrderRepository(orderDAO, menuDAO, orderFoodsDAO)
 
 }
