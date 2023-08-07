@@ -42,6 +42,13 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
+    kapt {
+        correctErrorTypes=true
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
@@ -54,11 +61,17 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+
     //Bar Code Scanner Library
     implementation("me.dm7.barcodescanner:zbar:1.9.13")
 
     //ROOM DATABASE Library
     val roomVersion = "2.5.2"
+    implementation("androidx.room:room-ktx:$roomVersion")
     implementation ("androidx.room:room-runtime:$roomVersion")
     annotationProcessor("androidx.room:room-compiler:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
@@ -68,8 +81,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.6.1")
 
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
+
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-compiler:2.47")
 
     //shared preference
     implementation("androidx.preference:preference-ktx:1.2.0")

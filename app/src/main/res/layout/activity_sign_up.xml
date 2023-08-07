@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.SignUpActivity">
+    tools:context=".views.auth.SignUpActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,12 +39,14 @@
                 android:hint="Full Name"
                 app:hintTextAppearance="?textAppearanceBody2"
                 app:errorTextColor="@color/colorError"
+                android:id="@+id/ed.name.layout"
                 app:errorTextAppearance="?textAppearanceBody2"
                 app:boxStrokeErrorColor="@color/colorError">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:textAppearance="?textAppearanceBody2"
                     android:inputType="text"
+                    android:id="@+id/ed.name"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -56,11 +58,13 @@
                 app:hintTextAppearance="?textAppearanceBody2"
                 app:errorTextColor="@color/colorError"
                 app:errorTextAppearance="?textAppearanceBody2"
+                android:id="@+id/ed.email.layout"
                 app:boxStrokeErrorColor="@color/colorError">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:textAppearance="?textAppearanceBody2"
                     android:inputType="textEmailAddress"
+                    android:id="@+id/ed.email"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -72,9 +76,11 @@
                 app:hintTextAppearance="?textAppearanceBody2"
                 app:errorTextColor="@color/colorError"
                 app:errorTextAppearance="?textAppearanceBody2"
+                android:id="@+id/ed.phone.layout"
                 app:boxStrokeErrorColor="@color/colorError">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:id="@+id/ed.phone"
                     android:textAppearance="?textAppearanceBody2"
                     android:inputType="phone"
                     android:layout_height="wrap_content"/>
@@ -91,11 +97,13 @@
                 app:hintTextAppearance="?textAppearanceBody2"
                 app:errorTextColor="@color/colorError"
                 app:errorTextAppearance="?textAppearanceBody2"
+                android:id="@+id/ed.password.layout"
                 app:boxStrokeErrorColor="@color/colorError">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:textAppearance="?textAppearanceBody2"
                     android:inputType="textPassword"
+                    android:id="@+id/ed.password"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.button.MaterialButton
@@ -103,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:padding="10dp"
+                android:id="@+id/btn.sign.up"
                 android:textColor="@color/white"
                 android:layout_marginTop="12dp"
                 android:textAppearance="?textAppearanceBody1"
@@ -126,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:text="Sign In"
                     android:textStyle="bold"
+                    android:id="@+id/txt.sign.in"
                     android:textAppearance="?textAppearanceBody1"
                     android:textColor="@color/secondaryColor"/>
 
