@@ -16,7 +16,6 @@ class App : Application() {
         super.onCreate()
         application = this
         Timber.plant(Timber.DebugTree())
-
         appInitializer.init()
     }
 

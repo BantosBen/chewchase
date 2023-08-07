@@ -46,8 +46,8 @@ class PrefManager {
         editor!!.commit()
     }
 
-    fun getUserID(): String {
-        return pref!!.getString("user_id", "0")!!
+    fun getUserID(): Int {
+        return pref!!.getString("user_id", "0")!!.toInt()
     }
     fun getReferralCode(): String {
         return pref!!.getString("ref_code", "XXXXX")!!
