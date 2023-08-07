@@ -11,6 +11,7 @@ import com.banit.chewchase.R
 import com.banit.chewchase.utils.PrefManager
 import com.banit.chewchase.utils.loadActivity
 import com.banit.chewchase.views.auth.SignInActivity
+import com.banit.chewchase.views.home.MainActivity
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var mContext: Context

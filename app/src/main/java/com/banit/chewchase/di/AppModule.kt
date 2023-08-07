@@ -5,7 +5,9 @@ import androidx.room.Room
 import com.banit.chewchase.data.AppDatabase
 import com.banit.chewchase.data.AppInitializer
 import com.banit.chewchase.data.dao.MenuDAO
+import com.banit.chewchase.data.dao.OrderDAO
 import com.banit.chewchase.data.dao.UserDAO
+import com.banit.chewchase.data.repository.OrderRepository
 import com.banit.chewchase.data.repository.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -55,4 +57,13 @@ class AppModule {
     fun provideUserRepository(userDAO: UserDAO): UserRepository {
         return UserRepository(userDAO)
     }
+
+    @Provides
+    @Singleton
+    fun provideOrderDAO(database: AppDatabase): OrderDAO = database.orderDAO()
+
+    @Provides
+    @Singleton
+    fun provideOrderRepository(orderDAO: OrderDAO): OrderRepository = OrderRepository(orderDAO)
+
 }

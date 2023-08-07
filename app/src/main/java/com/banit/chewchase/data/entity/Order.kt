@@ -8,6 +8,7 @@ data class Order(
     @PrimaryKey(autoGenerate = true)
     val orderId: Int = 0,
     val userId: Int,
+    val name:String,
     val subtotal: Double,
     val tip: Double,
     val orderDate: String

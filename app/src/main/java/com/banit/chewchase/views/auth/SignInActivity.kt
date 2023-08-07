@@ -8,7 +8,7 @@ import com.banit.chewchase.databinding.ActivitySignInBinding
 import com.banit.chewchase.utils.DialogUtils
 import com.banit.chewchase.utils.PrefManager
 import com.banit.chewchase.utils.loadActivity
-import com.banit.chewchase.views.MainActivity
+import com.banit.chewchase.views.home.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
