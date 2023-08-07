@@ -17,8 +17,24 @@ data class FoodDetailsFromOrder(
 data class UserOrdersWithFoods(
     @Embedded val order: Order,
     @Relation(
+        entity = OrderFoods::class,
         parentColumn = "orderId",
         entityColumn = "orderFoodsOrderId"
     )
-    val foods: List<OrderFoods>
+    val foods: List<OrderFoodsWithMenu>
+)
+
+
+data class CartItem(
+    val menu: Menu,
+    var quantity: Int
+)
+
+data class OrderFoodsWithMenu(
+    @Embedded val orderFoods: OrderFoods,
+    @Relation(
+        parentColumn = "menuItem",
+        entityColumn = "id"
+    )
+    val menu: Menu
 )

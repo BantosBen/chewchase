@@ -23,10 +23,10 @@
             android:name=".views.PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".views.ViewOrderActivity"
+            android:name=".views.order.ViewOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".views.NewOrderActivity"
+            android:name=".views.order.NewOrderActivity"
             android:exported="false" />
         <activity
             android:name=".views.auth.SignUpActivity"

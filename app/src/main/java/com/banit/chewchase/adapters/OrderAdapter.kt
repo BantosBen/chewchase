@@ -25,7 +25,7 @@ class OrderAdapter(private val orders: ArrayList<UserOrdersWithFoods>) :
         @SuppressLint("SetTextI18n")
         fun bind(userOrdersWithFoods: UserOrdersWithFoods) {
             txtTitle.text = userOrdersWithFoods.order.name
-            txtFoods.text = userOrdersWithFoods.foods.joinToString(", ")
+            txtFoods.text = userOrdersWithFoods.foods.joinToString(", ") { it.menu.name }
             txtAmount.text = "$${
                 formatCurrency((userOrdersWithFoods.order.subtotal + userOrdersWithFoods.order.tip).toString())
             }"
@@ -33,7 +33,6 @@ class OrderAdapter(private val orders: ArrayList<UserOrdersWithFoods>) :
                 onOrderClickListener.onOrderClick(userOrdersWithFoods)
             }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

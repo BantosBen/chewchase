@@ -24,7 +24,7 @@ import androidx.room.PrimaryKey
 data class OrderFoods(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val orderFoodsOrderId: Int,
+    var orderFoodsOrderId: Int = 0,
     val menuItem: String,
     val quantity: Int
 )

@@ -8,7 +8,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:visibility="gone"
+    android:id="@+id/payment.layout"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent">
     <androidx.appcompat.widget.Toolbar
@@ -50,6 +50,7 @@
             app:errorTextAppearance="?textAppearanceBody2"
             app:errorTextColor="@color/textError"
             app:errorEnabled="true"
+            android:id="@+id/ed.card.number.layout"
             app:boxStrokeErrorColor="@color/colorError"
             app:startIconDrawable="@drawable/baseline_credit_card"
             app:boxCornerRadiusTopStart="16dp">
@@ -57,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:hint="4343 4343 4343 4343 4343"
                 android:padding="10dp"
+                android:id="@+id/ed.card.number"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,12 +99,14 @@
                 app:errorTextAppearance="?textAppearanceBody2"
                 app:errorTextColor="@color/textError"
                 app:errorEnabled="true"
+                android:id="@+id/ed.expiry.date.layout"
                 app:boxStrokeErrorColor="@color/colorError"
                 app:boxCornerRadiusTopStart="16dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:hint="MM/YY"
                     android:padding="10dp"
+                    android:id="@+id/ed.expiry.date"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -120,12 +124,14 @@
                 app:errorTextAppearance="?textAppearanceBody2"
                 app:errorTextColor="@color/textError"
                 app:errorEnabled="true"
+                android:id="@+id/ed.cvc.layout"
                 app:boxStrokeErrorColor="@color/colorError"
                 app:boxCornerRadiusTopStart="16dp">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:hint="CVC"
                     android:padding="10dp"
+                    android:id="@+id/ed.cvc"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,6 +143,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="12dp"
+        android:id="@+id/btn.pay"
         android:text="PAY NOW $50.00"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -144,6 +151,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:visibility="gone"
+        android:id="@+id/success.layout"
         android:gravity="center">
         <ImageView
             android:layout_width="wrap_content"

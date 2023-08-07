@@ -11,8 +11,8 @@ import com.banit.chewchase.data.models.UserOrdersWithFoods
 import com.banit.chewchase.databinding.ActivityMainBinding
 import com.banit.chewchase.utils.PrefManager
 import com.banit.chewchase.utils.loadActivity
-import com.banit.chewchase.views.NewOrderActivity
-import com.banit.chewchase.views.ViewOrderActivity
+import com.banit.chewchase.views.order.NewOrderActivity
+import com.banit.chewchase.views.order.ViewOrderActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         binding.fabNewOrder.setOnClickListener {
             loadActivity(mContext, NewOrderActivity::class.java)
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
 
         viewModel.fetchOrdersForUser(PrefManager().getUserID()).observe(this, Observer { orders ->
             if (orders.isNotEmpty()) {

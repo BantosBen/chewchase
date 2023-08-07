@@ -1,8 +1,11 @@
 package com.banit.chewchase.data.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import com.banit.chewchase.data.entity.OrderFoods
 import com.banit.chewchase.data.models.FoodDetailsFromOrder
 
 @Dao
@@ -20,5 +23,9 @@ interface OrderFoodsDAO {
         WHERE order_foods_table.orderFoodsOrderId = :orderId
     """)
     suspend fun getFoodsWithDetailsFromOrder(orderId: Int): List<FoodDetailsFromOrder>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOrderFood(orderFood: OrderFoods)
+
 
 }
