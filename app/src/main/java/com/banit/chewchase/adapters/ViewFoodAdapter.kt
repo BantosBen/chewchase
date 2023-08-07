@@ -9,12 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.banit.chewchase.R
 import com.banit.chewchase.data.entity.Menu
 import com.banit.chewchase.data.models.CartItem
+import com.banit.chewchase.data.models.OrderFoodsWithMenu
 import com.banit.chewchase.utils.formatCurrency
 
-class CartAdapter(private val cartItems: ArrayList<CartItem>, private val isView: Boolean = true) :
-    RecyclerView.Adapter<CartAdapter.ViewHolder>() {
-    lateinit var onQuantityChangeListener: OnQuantityChangeListener
-
+class ViewFoodAdapter(private val orderFoods: ArrayList<OrderFoodsWithMenu>) :
+    RecyclerView.Adapter<ViewFoodAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val txtQty: TextView = itemView.findViewById(R.id.txt_qty)
         private val txtName: TextView = itemView.findViewById(R.id.txt_name)
@@ -24,23 +23,14 @@ class CartAdapter(private val cartItems: ArrayList<CartItem>, private val isView
         private val txtIncrement: TextView = itemView.findViewById(R.id.txt_add)
 
         @SuppressLint("SetTextI18n")
-        fun bind(cartItem: CartItem) {
-            txtQty.text = "${cartItem.quantity} x"
-            txtName.text = cartItem.menu.name
-            txtDescription.text = cartItem.menu.description
+        fun bind(orderFoodsWithMenu: OrderFoodsWithMenu) {
+            txtQty.text = "${orderFoodsWithMenu.orderFoods.quantity} x"
+            txtName.text = orderFoodsWithMenu.menu.name
+            txtDescription.text = orderFoodsWithMenu.menu.description
             txtAmount.text =
-                "$${formatCurrency((cartItem.menu.price * cartItem.quantity).toString())}"
-            txtDecrement.setOnClickListener {
-                onQuantityChangeListener.onQuantityChange(cartItem.menu, false)
-            }
-            txtIncrement.setOnClickListener {
-                onQuantityChangeListener.onQuantityChange(cartItem.menu, true)
-            }
-
-            if (!isView){
-                txtDecrement.visibility = View.GONE
-                txtIncrement.visibility = View.GONE
-            }
+                "$${formatCurrency((orderFoodsWithMenu.menu.price * orderFoodsWithMenu.orderFoods.quantity).toString())}"
+            txtDecrement.visibility = View.GONE
+            txtIncrement.visibility = View.GONE
         }
     }
 
@@ -50,19 +40,15 @@ class CartAdapter(private val cartItems: ArrayList<CartItem>, private val isView
         )
     }
 
-    override fun getItemCount(): Int = cartItems.size
+    override fun getItemCount(): Int = orderFoods.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(cartItems[position])
+        holder.bind(orderFoods[position])
     }
 
-    fun updateData(mCartItems: ArrayList<CartItem>) {
-        cartItems.clear()
-        cartItems.addAll(mCartItems)
+    fun updateData(mOrderFoods: ArrayList<OrderFoodsWithMenu>) {
+        orderFoods.clear()
+        orderFoods.addAll(mOrderFoods)
         notifyDataSetChanged()
-    }
-
-    interface OnQuantityChangeListener {
-        fun onQuantityChange(menu: Menu, isIncrement: Boolean)
     }
 }

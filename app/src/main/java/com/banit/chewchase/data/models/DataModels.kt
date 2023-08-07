@@ -5,6 +5,7 @@ import androidx.room.Relation
 import com.banit.chewchase.data.entity.Menu
 import com.banit.chewchase.data.entity.Order
 import com.banit.chewchase.data.entity.OrderFoods
+import java.io.Serializable
 
 data class FoodDetailsFromOrder(
     val orderFoodsOrderId: Int,
@@ -12,7 +13,7 @@ data class FoodDetailsFromOrder(
     val name: String,
     val description: String,
     val price: Double
-)
+):Serializable
 
 data class UserOrdersWithFoods(
     @Embedded val order: Order,
@@ -22,7 +23,7 @@ data class UserOrdersWithFoods(
         entityColumn = "orderFoodsOrderId"
     )
     val foods: List<OrderFoodsWithMenu>
-)
+):Serializable
 
 
 data class CartItem(
@@ -37,4 +38,4 @@ data class OrderFoodsWithMenu(
         entityColumn = "id"
     )
     val menu: Menu
-)
+):Serializable

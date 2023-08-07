@@ -18,7 +18,7 @@ import com.banit.chewchase.utils.DialogUtils
 import com.banit.chewchase.utils.PrefManager
 import com.banit.chewchase.utils.formatCurrency
 import com.banit.chewchase.utils.loadActivity
-import com.banit.chewchase.views.PaymentActivity
+import com.banit.chewchase.views.BarcodeScannerActivity
 import com.google.zxing.client.android.Intents
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
@@ -69,12 +69,10 @@ class NewOrderActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnAddFood.setOnClickListener {
-            val scanOption = ScanOptions()
-            scanOption.setPrompt("Scan a menu item to add to cart")
-            scanOption.setBarcodeImageEnabled(true)
-            scanOption.setBeepEnabled(true)
-            scanOption.setOrientationLocked(true)
-            barcodeLauncher.launch(scanOption)
+            val options = ScanOptions().setOrientationLocked(false).setCaptureActivity(
+                BarcodeScannerActivity::class.java
+            )
+            barcodeLauncher.launch(options)
         }
 
         val stamp = Date().time.toString()

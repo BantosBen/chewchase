@@ -1,10 +1,9 @@
-package com.banit.chewchase.views
+package com.banit.chewchase.views.order
 
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.banit.chewchase.R
 import com.banit.chewchase.databinding.ActivityPaymentBinding
 import com.banit.chewchase.utils.DialogUtils
 import com.banit.chewchase.utils.formatCurrency

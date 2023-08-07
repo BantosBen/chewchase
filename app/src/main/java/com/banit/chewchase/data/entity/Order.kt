@@ -2,6 +2,7 @@ package com.banit.chewchase.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "order_table")
 data class Order(
@@ -12,4 +13,4 @@ data class Order(
     val subtotal: Double,
     val tip: Double,
     val orderDate: String
-)
+): Serializable

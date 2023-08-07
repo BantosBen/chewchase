@@ -14,6 +14,7 @@ import com.banit.chewchase.utils.loadActivity
 import com.banit.chewchase.views.order.NewOrderActivity
 import com.banit.chewchase.views.order.ViewOrderActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.Serializable
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -31,9 +32,9 @@ class MainActivity : AppCompatActivity() {
         orderAdapter = OrderAdapter(arrayListOf())
         orderAdapter.onOrderClickListener = object : OrderAdapter.OnOrderClickListener {
             override fun onOrderClick(userOrdersWithFoods: UserOrdersWithFoods) {
-                val data = HashMap<String, String>()
-                data["id"] = userOrdersWithFoods.order.orderId.toString()
-                loadActivity(mContext, ViewOrderActivity::class.java, dataString = data)
+                val data = HashMap<String, Serializable>()
+                data["data"] = userOrdersWithFoods
+                loadActivity(mContext, ViewOrderActivity::class.java, dataObject = data)
             }
         }
         binding.recyclerView.adapter = orderAdapter
